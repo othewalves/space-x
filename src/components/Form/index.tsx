@@ -6,6 +6,7 @@ import Radio from '../../components/Radio';
 import { formSchema, FormSchema } from '../../validators/form.validator';
 
 import { useNavigate } from 'react-router-dom';
+import Button from '../Button';
 
 const Form = () => {
 
@@ -83,9 +84,9 @@ const Form = () => {
                         label='Explique sua doença, por favor'
                     />
                 }
-                <button type='submit'>
+                <Button type='submit'>
                     Comprar ticket
-                </button>
+                </Button>
             </form>
         </div>
     );
