@@ -34,7 +34,7 @@ const Radio = ({
                                     value={option.value}
                                     checked={field.value === option.value}
                                     onChange={() => field.onChange(option.value)}
-                                    className="accent-blue-500"
+                                    className="accent-primary border border-neutro-500 w-[20px] h-[20px]"
 
                                 />
                                 <span>{option.label}</span>
