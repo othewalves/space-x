@@ -7,9 +7,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Radio from '../../components/Radio';
 import { formSchema, FormSchema } from '../../validators/form.validator';
 
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const {
+        watch,
         control,
         handleSubmit,
         formState: { errors }
@@ -20,12 +22,17 @@ const Home = () => {
             name: '',
             age: undefined,
             hasDisease: undefined,
+            disease: '',
 
         }
     });
 
+    const hasDisease = watch('hasDisease');
+
+    const navigate = useNavigate();
+
     const handleTakeTicket = async (dataForm: FormSchema) => {
-        console.log('dados recebidos', dataForm)
+        if (dataForm) return navigate('/boarding-pass')
     }
 
     return (
@@ -72,6 +79,15 @@ const Home = () => {
                             { value: "no", label: "Não" },
                         ]}
                     />
+                    {
+                        hasDisease === 'yes' &&
+                        <Input
+                            name='disease'
+                            control={control}
+                            error={errors.disease?.message || ''}
+                            label='Explique sua doença, por favor'
+                        />
+                    }
                     <button type='submit'>
                         Comprar ticket
                     </button>
