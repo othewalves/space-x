@@ -16,4 +16,6 @@
   --color-neutro-100: oklch(97.91% 0 0);
   --color-neutro-500: oklch(27.99% 0.0092 294.97);
   --color-neutro-700: oklch(16.45% 0.0128 300.23);
+
+  --font-poppins: Poppins, sans-serif;
 }
