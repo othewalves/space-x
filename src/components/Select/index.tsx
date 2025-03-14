@@ -2,12 +2,24 @@ import { SelectHTMLAttributes, useEffect, useState } from 'react';
 // import { Controller } from 'react-hook-form';
 import { Options } from '../../interfaces/options';
 import { api } from '../../services/apiClient';
+import { Control, Controller } from 'react-hook-form';
+import { FormSchema } from '../../validators/form.validator';
 
 interface ISelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
     label: string;
+    name: keyof FormSchema;
+    error: string;
+    control: Control<FormSchema>;
+
 }
 
-const Select = ({ label }: ISelectProps) => {
+const Select = ({
+    label,
+    control,
+    error,
+    name,
+    ...rest
+}: ISelectProps) => {
 
     const [options, setOptions] = useState<Options[]>([]);
 
@@ -26,21 +38,22 @@ const Select = ({ label }: ISelectProps) => {
     }, [])
 
     return (
-        // <Controller
-        //     {...rest}
-        //     render={({ field, fieldState: { error } }) => (
-        <div>
-            <p className="text-sm font-medium text-left text-[#1e1e1e]">{label}</p>
-            <select className="w-full h-14 pl-4 rounded-xl border border-neutro-500 outline-none z-100">
-                <option value="" disabled>Selecione uma opção</option>
-                {options.map((option) => (
-                    <option key={option.id} value={option.id}>{option.name}</option>
-                ))}
-            </select>
-            {/* {error && <span className='text-red-500'>{error.message}</span>} */}
+        <div className='w-full'>
+            <label className="text-sm font-medium text-left text-neutro-500">{label}</label>
+            <Controller
+                name={name}
+                control={control}
+                render={({ field }) => (
+                    <select {...rest} {...field} className="w-full h-14 pl-4 rounded-xl border border-neutro-500 outline-none z-100">
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        {options.map((option) => (
+                            <option key={option.id} value={option.id}>{option.name}</option>
+                        ))}
+                    </select>
+                )}
+            />
+            {error.length > 0 && <span className='text-red-500 text-sm'>{error}</span>}
         </div>
-        // )}
-        // />
     )
 }
 
