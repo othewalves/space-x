@@ -19,7 +19,6 @@ export const formSchema = z.object({
             required_error: 'Data de nascimento é obrigatória',
         })
         .min(new Date('1900-01-01'), { message: 'Data de nascimento inválida' })
-
         .refine((date) => {
             return isBefore(date, subYears(new Date(), 18))
         }, "Você deve ser maior de 18 para embarcar nessa"),

@@ -15,6 +15,7 @@ const Form = () => {
     const {
         watch,
         control,
+        register,
         handleSubmit,
         formState: { errors }
     } = useForm<FormSchema>({
@@ -56,18 +57,17 @@ const Form = () => {
                     label='Selecione seu destino'
                 />
                 <Input
-                    name='name'
-                    control={control}
+                    {...register('name')}
                     type='text'
                     label='Nome completo'
                     placeholder='Ex: José da Silva'
                     error={errors.name?.message || ''}
                 />
                 <Input
-                    name='birthDate'
-                    control={control}
+                    {...register('birthDate')}
                     type='date'
-                    label='Idade'
+                    maxLength={6}
+                    label='Sua data de nascimento'
                     placeholder='Ex: 18'
                     error={errors.birthDate?.message || ''}
                 />
@@ -84,10 +84,11 @@ const Form = () => {
                 {
                     hasDisease === 'yes' &&
                     <Input
-                        name='disease'
-                        control={control}
-                        error={errors.disease?.message || ''}
+                        {...register('disease')}
+                        type='text'
                         label='Explique sua doença, por favor'
+                        placeholder='Fale um pouco mais sobre sua doença'
+                        error={errors.disease?.message || ''}
                     />
                 }
                 <Button type='submit'>

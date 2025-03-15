@@ -1,37 +1,42 @@
 import { InputHTMLAttributes } from "react";
-import { Control, Controller } from 'react-hook-form';
+// import { Controller } from 'react-hook-form';
 import { FormSchema } from "../../validators/form.validator";
+// import { RegisterOptions } from "react-hook-form";
+// import { Control } from "react-hook-form";
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
-    name: keyof FormSchema;
+    name: keyof Pick<FormSchema, 'name' | 'disease' | 'birthDate'>;
     error: string;
-    control: Control<FormSchema>;
+    // register: RegisterOptions
+    // control: Control<FormSchema>;
 }
 
 const Input = ({
     label,
     name,
-    control,
+    // control,
     error,
+    // register
     ...rest
 
 }: IInputProps) => {
     return (
         <div className='w-full'>
             <label className="text-sm font-medium text-left text-neutro-500">{label}</label>
-            <Controller
+            {/* <Controller
                 name={name}
-                control={control}
-                render={({ field }) => (
-                    <input
-                        {...field}
-                        className="w-full h-14 px-4 rounded-xl border border-neutro-500 outline-none"
-                        {...rest}
-                    />
-                )}
+                // control={control}
+                render={({ field }) => ( */}
+            <input
+                // {...field}
+                name={name}
+                className="w-full h-14 px-4 rounded-xl border border-neutro-500 outline-none"
+                {...rest}
             />
-            {error && <p className="text-red-500 text-sm w-full">{error}</p>}
+            {/* )}
+            /> */}
+            {error && <span className="text-red-500 text-sm w-full">{error}</span>}
         </div>
     );
 }
