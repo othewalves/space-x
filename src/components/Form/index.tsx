@@ -31,6 +31,8 @@ const Form = () => {
 
     const hasDisease = watch('hasDisease');
 
+    console.error('Erramo feio', errors)
+
     const navigate = useNavigate();
 
     const handleTakeTicket = async (dataForm: FormSchema) => {

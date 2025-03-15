@@ -27,7 +27,7 @@ const Radio = ({
                 render={({ field }) => (
                     <div>
                         {options.map((option) => (
-                            <div className="flex items-center justify-start gap-1">
+                            <div className="flex items-center justify-start gap-1" key={option.value}>
                                 <input
                                     {...rest}
                                     type="radio"
