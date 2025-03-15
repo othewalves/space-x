@@ -22,21 +22,23 @@ const Form = () => {
         defaultValues: {
             destiny: '',
             name: '',
-            age: undefined,
+            birthDate: new Date('1800-01-01'),
             hasDisease: undefined,
             disease: '',
+
 
         }
     });
 
     const hasDisease = watch('hasDisease');
 
-    console.error('Erramo feio', errors)
 
     const navigate = useNavigate();
 
     const handleTakeTicket = async (dataForm: FormSchema) => {
         if (dataForm) return navigate('/boarding-pass')
+        console.log(dataForm);
+
     }
 
 
@@ -62,12 +64,12 @@ const Form = () => {
                     error={errors.name?.message || ''}
                 />
                 <Input
-                    name='age'
+                    name='birthDate'
                     control={control}
-                    type='number'
+                    type='date'
                     label='Idade'
                     placeholder='Ex: 18'
-                    error={errors.age?.message || ''}
+                    error={errors.birthDate?.message || ''}
                 />
                 <Radio
                     name={'hasDisease'}

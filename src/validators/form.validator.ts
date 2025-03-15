@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { isBefore, subYears } from 'date-fns';
+
 export const formSchema = z.object({
     name: z
         .string()
@@ -10,18 +12,20 @@ export const formSchema = z.object({
             const names = value.trim().split(' ')
             return names.length > 0 && names[1].length > 2
         }, 'Informe um sobrenome válido'),
-    age: z
-        .string()
-        .nonempty("Idade é obrigatória")
-        .max(2, "Opção de idade inválida")
-        .transform((val) => Number(val)) // Converte para número
-        .refine((val) => !isNaN(val) && val >= 0, "A idade não pode ser negativa")
-        .refine((val) => val >= 18 && val <= 99, "Você deve ser maior de 18 anos para embarcar nessa"),
+    birthDate: z
+        .coerce
+        .date({
+            invalid_type_error: 'Data de nascimento obrigatória',
+            required_error: 'Data de nascimento é obrigatória',
+        })
+        .min(new Date('1900-01-01'), { message: 'Data de nascimento inválida' })
+
+        .refine((date) => {
+            return isBefore(date, subYears(new Date(), 18))
+        }, "Você deve ser maior de 18 para embarcar nessa"),
     destiny: z.string().nonempty('Destino é obrigatório'),
     hasDisease: z.enum(['yes', 'no'], { message: 'Opção obrigatória' }),
-    disease: z
-        .string()
-        .optional()
+    disease: z.string().optional()
 })
     .refine((data) => {
         if (data.hasDisease === 'yes' && !data.disease) {
