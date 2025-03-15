@@ -1,12 +1,14 @@
-import Input from '../../components/Input';
-import Select from '../../components/Select';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
 import { zodResolver } from '@hookform/resolvers/zod';
-import Radio from '../../components/Radio';
 import { formSchema, FormSchema } from '../../validators/form.validator';
 
-import { useNavigate } from 'react-router-dom';
 import Button from '../Button';
+import Radio from '../../components/Radio';
+import Input from '../../components/Input';
+import Select from '../../components/Select';
+
 
 const Form = () => {
 
@@ -37,7 +39,7 @@ const Form = () => {
 
 
     return (
-        <div>
+        <div className='w-[400px]'>
             <h1 className='text-[32px] font-bold text-left text-neutro-500'>SPACE X</h1>
             <span className="text-base font-light text-left text-neutro-500">Do sonho à órbita, levamos você além!</span>
 
