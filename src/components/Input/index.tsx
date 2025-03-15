@@ -6,7 +6,7 @@ import { FormSchema } from "../../validators/form.validator";
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
-    name: keyof Pick<FormSchema, 'name' | 'disease'>;
+    name: keyof Pick<FormSchema, 'name' | 'disease' | 'birthDate'>;
     error: string;
     // register: RegisterOptions
     // control: Control<FormSchema>;

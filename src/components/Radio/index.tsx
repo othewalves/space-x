@@ -4,7 +4,7 @@ import { FormSchema } from "../../validators/form.validator";
 
 interface IRadioProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
-    name: keyof FormSchema;
+    name: keyof Pick<FormSchema, 'hasDisease'>;
     error: string;
     control: Control<FormSchema>;
     options: { value: string, label: string }[];
