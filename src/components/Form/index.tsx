@@ -50,8 +50,6 @@ const Form = () => {
 
             <form onSubmit={handleSubmit(handleTakeTicket)} className='gap-y-8 max-w-[400px] p-4'>
                 <Select
-                    // name='destiny'
-                    // control={control}
                     error={errors.destiny?.message || ''}
                     aria-placeholder='Selecione uma opção'
                     label='Selecione seu destino'
@@ -72,7 +70,6 @@ const Form = () => {
                     placeholder='Ex: 18'
                     error={errors.birthDate?.message || ''}
                 />
-                {/* {errors.birthDate && errors.birthDate?.message || ''} */}
                 <Radio
                     name={'hasDisease'}
                     control={control}
