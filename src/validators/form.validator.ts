@@ -5,13 +5,7 @@ export const formSchema = z.object({
     name: z
         .string()
         .nonempty('Nome é obrigatório')
-        .min(3, 'Informe um nome válido')
-        .refine((value) => value.includes(' '), 'Obrigatório o nome completo')
-        .refine((value) => {
-            if (!value) return false;
-            const names = value.trim().split(' ')
-            return names.length > 0 && names[1].length > 2
-        }, 'Informe um sobrenome válido'),
+        .refine((value) => value.includes(' '), { message: 'Obrigatório o nome completo' }),
     birthDate: z
         .coerce
         .date({
