@@ -29,7 +29,7 @@ const BoardingPass = () => {
         doc.text(`Possui alguma doença: ${user.hasDisease} - ${user.disease}`, 20, 50);
 
         doc.setFont("Arial", "normal");
-        doc.text(`Destino: ${trip?.name}`, 20, 70);
+        doc.text(`Voo: ${trip?.name}`, 20, 70);
 
         doc.setFont("Arial", "normal");
         doc.text(`Data de embarque: ${trip?.date_local && formatDate(trip?.date_local)}`, 20, 80);
