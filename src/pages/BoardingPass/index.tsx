@@ -9,6 +9,7 @@ import { formatDate } from "../../utils/formatDate";
 import Button from "../../components/Button";
 
 import { jsPDF } from 'jspdf'
+import { Link } from "react-router-dom";
 
 const BoardingPass = () => {
     const { user } = useContext(UserContext);
@@ -53,13 +54,13 @@ const BoardingPass = () => {
 
     return (
 
-        <main className="bg-color-neutro-100 w-full h-full max-w-[1200px] px-4 md:mt-15 mx-auto flex flex-col-reverse md:flex-row items-center justify-between">
+        <main className="bg-color-neutro-100 w-full h-full max-w-[1200px] px-8 md:px-4 md:mt-4 mx-auto flex flex-col-reverse md:flex-row items-center justify-between">
             <img src={AstronautPNG} alt="Astronauta"
                 className='w-[300px] h-[300px] md:w-[400px] md:h-[400px] md:mt-[100px]'
             />
-            <div className="w-[503.26px] mt-12">
+            <div className="w-[400px] md:w-[500px] mt-12">
                 <div
-                    className="w-[503.26px] p-8 rounded-[32px] bg-neutro-100"
+                    className="w-[400px] md:w-[500px] p-8 rounded-[32px] bg-neutro-100"
                     style={{ boxShadow: "4px 4px 8px 0 rgba(30,30,30,0.25)" }}
                 >
                     <h2 className="text-[22px] font-medium text-center text-neutro-500">Cartão de embarque</h2>
@@ -107,8 +108,10 @@ const BoardingPass = () => {
                         </div>
                     </div>
                     <Button onClick={generatePDF}>Baixar cartão de embarque</Button>
+                    <Link className="text-neutro-500 text-xs text-center block mt-4" to={'/'}>Clique para fazer uma nova compra</Link>
                 </div>
             </div>
+
         </main>
     );
 }
