@@ -15,11 +15,11 @@ const Input = ({
 
 }: IInputProps) => {
     return (
-        <div className='w-full'>
+        <div className='w-full mb-4'>
             <label className="text-sm font-medium text-left text-neutro-500">{label}</label>
             <input
                 name={name}
-                className="w-full h-14 px-4 rounded-xl border border-neutro-500 outline-none"
+                className="w-full h-14 px-4 mt-2 rounded-xl border border-neutro-500 outline-none"
                 {...rest}
             />
             {error && <span className="text-red-500 text-sm w-full">{error}</span>}

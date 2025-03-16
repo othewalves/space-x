@@ -5,7 +5,7 @@ import Form from '../../components/Form';
 const Home = () => {
 
     return (
-        <main className="bg-color-neutro-100 w-full h-full max-w-[1200px] px-4 block md:mt-15 mx-auto flex flex-col-reverse md:flex-row items-center justify-between">
+        <main className="bg-color-neutro-100 w-full h-full max-w-[1200px] px-4 md:mt-15 mx-auto flex flex-col-reverse md:flex-row items-center justify-between">
             <img
                 src={Rocket}
                 alt='Foguete'

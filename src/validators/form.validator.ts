@@ -5,7 +5,8 @@ export const formSchema = z.object({
     name: z
         .string()
         .nonempty('Nome é obrigatório')
-        .refine((value) => value.includes(' '), { message: 'Obrigatório o nome completo' }),
+        .refine((value) => value.includes(' ')
+            , { message: 'Obrigatório o nome completo' }),
     birthDate: z
         .coerce
         .date({
@@ -17,11 +18,11 @@ export const formSchema = z.object({
             return isBefore(date, subYears(new Date(), 18))
         }, "Você deve ser maior de 18 para embarcar nessa"),
     destiny: z.string().nonempty('Destino é obrigatório'),
-    hasDisease: z.enum(['yes', 'no'], { message: 'Opção obrigatória' }),
+    hasDisease: z.enum(['Sim', 'Não'], { message: 'Opção obrigatória' }),
     disease: z.string().optional()
 })
     .refine((data) => {
-        if (data.hasDisease === 'yes' && !data.disease) {
+        if (data.hasDisease === 'Sim' && !data.disease) {
             return false;
         }
         return true

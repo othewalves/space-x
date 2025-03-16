@@ -6,7 +6,7 @@ const AppRouter = () => {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/boarding-pass' element={<BoardingPass />} />
+                <Route path='/boarding-pass/:tripId' element={<BoardingPass />} />
                 <Route path='*' element={<Navigate to={'/'} />} />
             </Routes>
         </BrowserRouter>

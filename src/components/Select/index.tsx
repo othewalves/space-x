@@ -30,10 +30,10 @@ const Select = ({
     }, [])
 
     return (
-        <div className='w-full relative'>
+        <div className='w-full relative mb-4'>
             <label className="text-sm font-medium text-left text-neutro-500">{label}</label>
             <div className='w-full'>
-                <select {...rest} className="relative w-full h-14 pl-4 placeholder-gray-400 appearance-none rounded-xl border border-neutro-500 outline-none z-100">
+                <select {...rest} className="relative w-full mt-2 h-14 pl-4 placeholder-gray-400 appearance-none rounded-xl border border-neutro-500 outline-none z-100">
                     <option className='w-full text-gray-400' value="" disabled selected >Selecione uma opção</option>
                     {options.map((option) => (
                         <option className='w-full text-neutro-500 border border-neutro-500' key={option.id} value={option.id}>{option.name}</option>

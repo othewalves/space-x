@@ -8,10 +8,11 @@ import Button from '../Button';
 import Radio from '../../components/Radio';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 
 const Form = () => {
-
     const {
         watch,
         control,
@@ -26,27 +27,29 @@ const Form = () => {
             birthDate: new Date('1800-01-01'),
             hasDisease: undefined,
             disease: '',
-
-
         }
     });
 
-    const hasDisease = watch('hasDisease');
+    const { setUser } = useContext(UserContext)
 
+    const hasDisease = watch('hasDisease');
 
     const navigate = useNavigate();
 
     const handleTakeTicket = async (dataForm: FormSchema) => {
-        if (dataForm) return navigate('/boarding-pass')
-        console.log(dataForm);
+        setUser(dataForm)
+        navigate(`/boarding-pass/${dataForm.destiny}`)
+
 
     }
 
 
     return (
         <div className='w-[400px]'>
-            <h1 className='text-[32px] font-bold text-left text-neutro-500'>SPACE X</h1>
-            <span className="text-base font-light text-left text-neutro-500">Do sonho à órbita, levamos você além!</span>
+            <div className='pl-4'>
+                <h1 className='text-[32px] font-bold text-left text-neutro-500'>SPACE X</h1>
+                <span className="text-base font-light text-left text-neutro-500">Do sonho à órbita, levamos você além!</span>
+            </div>
 
             <form onSubmit={handleSubmit(handleTakeTicket)} className='gap-y-8 max-w-[400px] p-4'>
                 <Select
@@ -76,12 +79,12 @@ const Form = () => {
                     error={errors.hasDisease?.message || ''}
                     label='Possui alguma doença?'
                     options={[
-                        { value: "yes", label: "Sim" },
-                        { value: "no", label: "Não" },
+                        { value: "Sim", label: "Sim" },
+                        { value: "Não", label: "Não" },
                     ]}
                 />
                 {
-                    hasDisease === 'yes' &&
+                    hasDisease === 'Sim' &&
                     <Input
                         {...register('disease')}
                         type='text'
