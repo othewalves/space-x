@@ -39,7 +39,7 @@ const Select = ({
                         <option className='w-full text-neutro-500 border border-neutro-500' key={option.id} value={option.id}>{option.name}</option>
                     ))}
                 </select>
-                <SlArrowDown className="absolute right-4 top-12 w-3 h-3 text-neutro-500" />
+                <SlArrowDown className="absolute right-4 top-14 w-3 h-3 text-neutro-500" />
             </div>
             {error.length > 0 && <span className='text-red-500 text-sm'>{error}</span>}
         </div>
