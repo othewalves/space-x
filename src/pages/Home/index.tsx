@@ -10,7 +10,7 @@ const Home = () => {
             <img
                 src={Rocket}
                 alt='Foguete'
-                className='w-[300px] h-[300px] md:w-[400px] md:h-[400px] md:mt-[100px]'
+                className='w-[300px] h-[300px] md:w-[400px] md:h-[400px]'
             />
         </main >
     );
