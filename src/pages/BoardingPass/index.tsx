@@ -6,11 +6,35 @@ import { api } from "../../services/apiClient";
 import { Trip } from "../../interfaces/trip";
 import { calculateAge } from "../../utils/calculateAge";
 import { formatDate } from "../../utils/formatDate";
+import Button from "../../components/Button";
 
+import { jsPDF } from 'jspdf'
 
 const BoardingPass = () => {
     const { user } = useContext(UserContext);
     const [trip, setTrip] = useState<Trip>();
+
+    const generatePDF = () => {
+        const doc = new jsPDF();
+
+        doc.addImage(AstronautPNG, 'PNG', 15, 100, 50, 50)
+        doc.setFont("Arial", "bold");
+        doc.text("Cartão de embarque", 20, 20);
+
+        doc.setFont("Arial", "normal");
+        doc.text(`Passageiro: ${user.name}`, 20, 40);
+
+        doc.setFont("Arial", "normal");
+        doc.text(`Possui alguma doença: ${user.hasDisease} - ${user.disease}`, 20, 50);
+
+        doc.setFont("Arial", "normal");
+        doc.text(`Destino: ${trip?.name}`, 20, 70);
+
+        doc.setFont("Arial", "normal");
+        doc.text(`Data de embarque: ${trip?.date_local && formatDate(trip?.date_local)}`, 20, 80);
+
+        doc.save(`cartao-embarque.pdf`);
+    };
 
     const getTrip = async () => {
         try {
@@ -33,9 +57,9 @@ const BoardingPass = () => {
             <img src={AstronautPNG} alt="Astronauta"
                 className='w-[300px] h-[300px] md:w-[400px] md:h-[400px] md:mt-[100px]'
             />
-            <div className="max-w-[503.26px] mt-12">
+            <div className="w-[503.26px] mt-12">
                 <div
-                    className="max-w-[503.26px] p-8 rounded-[32px] bg-neutro-100"
+                    className="w-[503.26px] p-8 rounded-[32px] bg-neutro-100"
                     style={{ boxShadow: "4px 4px 8px 0 rgba(30,30,30,0.25)" }}
                 >
                     <h2 className="text-[22px] font-medium text-center text-neutro-500">Cartão de embarque</h2>
@@ -82,6 +106,7 @@ const BoardingPass = () => {
                                 className="w-[100px] h-[100px] rounded-2xl" />
                         </div>
                     </div>
+                    <Button onClick={generatePDF}>Baixar cartão de embarque</Button>
                 </div>
             </div>
         </main>
