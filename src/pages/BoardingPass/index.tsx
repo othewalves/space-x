@@ -65,7 +65,6 @@ const BoardingPass = () => {
                     style={{ boxShadow: "4px 4px 8px 0 rgba(30,30,30,0.25)" }}
                 >
                     <h2 className="text-[22px] font-medium text-center text-neutro-500">Cartão de embarque</h2>
-
                     <div className="mt-6 mb-4">
                         <p className="text-base font-medium text-left text-neutro-500">
                             PASSAGEIRO
