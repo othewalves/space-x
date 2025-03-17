@@ -39,7 +39,7 @@ const Form = () => {
 
     const handleTakeTicket = async (dataForm: FormSchema) => {
         setUser(dataForm)
-        navigate(`/boarding-pass`)
+        navigate(`/success`)
     }
 
 

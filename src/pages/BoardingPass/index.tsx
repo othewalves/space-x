@@ -50,10 +50,15 @@ const BoardingPass = () => {
 
     return (
 
-        <main className="bg-color-neutro-100 w-full h-full max-w-[1200px] px-8 md:px-4 md:mt-4 mx-auto flex flex-col-reverse md:flex-row items-center justify-between">
-            <img src={AstronautPNG} alt="Astronauta"
-                className='w-[300px] h-[300px] md:w-[400px] md:h-[400px] md:mt-[100px]'
-            />
+        <main className=" w-full h-full max-w-[1200px] px-8 md:px-4 md:mt-4 mx-auto flex flex-col-reverse md:flex-row items-center justify-between">
+            <div>
+                <div className="w-full p-4 rounded-lg mt-2 md:mt-0 bg-neutro-100 border-l-[4px] border-l-primary">
+                    <span className="text-base font-medium text-left text-neutro">Compra realizada com sucesso!</span>
+                </div>
+                <img src={AstronautPNG} alt="Astronauta"
+                    className='w-[300px] h-[300px] md:w-[400px] md:h-[400px] md:mt-[100px]'
+                />
+            </div>
             <div className="w-[400px] md:w-[500px] mt-12">
                 <div
                     className="w-[400px] md:w-[500px] p-8 rounded-[32px] bg-neutro-100"
