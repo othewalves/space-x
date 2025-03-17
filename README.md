@@ -14,6 +14,12 @@ Tecnologias usadas:
 - Zod;
 - JsPDF;
 
+<span>Para executar o projeto basta:</span>
+
+1. Clonar o repositório;
+2. Executar o comando <code>npm i</code> para instalar as dependências;
+3. Executar o comando <code>npm run dev</code> para executar a aplicação;
+
 <quote>
-Projeto disponível em: https://devmatheusspacex.vercel.app/
+🌐 Projeto disponível em: https://devmatheusspacex.vercel.app/
 </quote>
