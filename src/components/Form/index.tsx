@@ -32,7 +32,7 @@ const Form = () => {
 
     const { setUser } = useContext(UserContext)
 
-    const hasDisease = watch('hasDisease');
+    const hasDiseaseField = watch('hasDisease');
 
     const navigate = useNavigate();
 
@@ -82,7 +82,7 @@ const Form = () => {
                     ]}
                 />
                 {
-                    hasDisease === 'Sim' &&
+                    hasDiseaseField === 'Sim' &&
                     <Input
                         {...register('disease')}
                         type='text'

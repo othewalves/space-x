@@ -41,8 +41,6 @@ const BoardingPass = () => {
         try {
             const { data } = await api.get<Trip>(`launches/${user.destiny}`);
             setTrip(data)
-            console.log(data);
-
         } catch (error) {
             console.log(error)
         }
