@@ -12,6 +12,7 @@ Tecnologias usadas:
 - Axios;
 - React Hook Form;
 - Zod;
+- JsPDF;
 
 <quote>
 Projeto disponível em: https://devmatheusspacex.vercel.app/
