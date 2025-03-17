@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 
-import AstronautPNG from '../../assets/images/astrounaut.png';
-import { api } from "../../services/apiClient";
 import { Trip } from "../../interfaces/trip";
-import { calculateAge } from "../../utils/calculateAge";
-import { formatDate } from "../../utils/formatDate";
-import Button from "../../components/Button";
+import { getTripDetails } from "../../services/getTripsDetails.service";
+
 
 import { jsPDF } from 'jspdf'
-import { Link } from "react-router-dom";
+import { calculateAge } from "../../utils/calculateAge";
+import { formatDate } from "../../utils/formatDate";
+
+import Button from "../../components/Button";
+import AstronautPNG from '../../assets/images/astrounaut.png';
 
 const BoardingPass = () => {
     const { user } = useContext(UserContext);
@@ -38,12 +40,8 @@ const BoardingPass = () => {
     };
 
     const getTrip = async () => {
-        try {
-            const { data } = await api.get<Trip>(`launches/${user.destiny}`);
-            setTrip(data)
-        } catch (error) {
-            console.log(error)
-        }
+        const tripDetails = await getTripDetails(user.destiny);
+        setTrip(tripDetails)
     }
 
     useEffect(() => {

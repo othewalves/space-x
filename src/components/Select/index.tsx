@@ -1,7 +1,7 @@
 import { SelectHTMLAttributes, useEffect, useState } from 'react';
 import { Options } from '../../interfaces/options';
-import { api } from '../../services/apiClient';
 import { SlArrowDown } from 'react-icons/sl';
+import { getUpcomingTrips } from '../../services/getUpcomingTrips.service';
 
 interface ISelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
     label: string;
@@ -16,18 +16,15 @@ const Select = ({
 
     const [options, setOptions] = useState<Options[]>([]);
 
+
     const getOptions = async () => {
-        try {
-            const { data } = await api.get<Options[]>('launches/upcoming');
-            setOptions(data);
-        } catch (error) {
-            console.error('Falha ao encontrar os dados', error)
-        }
+        const trips: Options[] = await getUpcomingTrips();
+        setOptions(trips);
     }
 
     useEffect(() => {
         getOptions()
-    }, [])
+    }, []);
 
     return (
         <div className='w-full relative mb-4'>
